@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<RootNamespace>Auth0.Actions</RootNamespace>
+		<TargetFrameworks>net8.0;net7.0;net6.0</TargetFrameworks>
+		<DocumentationFile>$(DocumentationFile)\$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="System.Text.Json" Version="7.0.3" />
+	</ItemGroup>
+
+</Project>

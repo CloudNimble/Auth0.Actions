@@ -1,0 +1,14 @@
+# TypeScipt sources are not required for deployments
+tsconfig.json
+
+# Config files for testing and linting
+.eslintrc.js*
+
+bin/**/*.*
+obj/**/*.*
+tests/**/*.*
+
+*.tgz
+*.tsbuildinfo
+*.build.json
+*.esproj

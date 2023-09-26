@@ -1,0 +1,125 @@
+<Project>
+    <!--<Import Project="version.props" />-->
+
+    <!-- Folder layout -->
+    <PropertyGroup>
+        <IsBenchmarkProject Condition="$(MSBuildProjectName.ToLower().Contains('.benchmarks'))">true</IsBenchmarkProject>
+        <IsTestProject Condition="$(MSBuildProjectName.ToLower().Contains('.tests.')) == 'true' AND $(MSBuildProjectName.ToLower().EndsWith('.tests.web')) != 'true'">true</IsTestProject>
+        <IsTestAssetProject Condition="$(RepoRelativeProjectDir.Contains('.resources'))">true</IsTestAssetProject>
+        <IsSampleProject Condition="$(MSBuildProjectName.ToLower().Contains('.samples.'))">true</IsSampleProject>
+        <IsTemplateProject Condition="$(MSBuildProjectName.ToLower().Contains('.templates.'))">true</IsTemplateProject>
+        <IsTemplatePackageProject Condition="$(MSBuildProjectName.ToLower().Contains('.templates.package'))">true</IsTemplatePackageProject>
+        <IsDatabaseProject Condition="$(MSBuildProjectName.ToLower().EndsWith('.database'))">true</IsDatabaseProject>
+        <IsWebProject Condition="$(MSBuildProjectName.ToLower().Contains('.web.')) == 'true' or $(MSBuildProjectName.ToLower().EndsWith('.api')) == 'true'">true</IsWebProject>
+        <IsPrimaryProject Condition=" ('$(IsBenchmarkProject)' != 'true' And '$(IsTestProject)' != 'true' And '$(IsTestAssetProject)' != 'true' And '$(IsSampleProject)' != 'true' And '$(IsSampleProject)' != 'true' And '$(IsDatabaseProject)' != 'true' And '$(IsWebProject)' != 'true') or '$(IsTemplatePackageProject)' == 'true' ">true</IsPrimaryProject>
+
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <IncludeSource>false</IncludeSource>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <LangVersion>12.0</LangVersion>
+        <DefaultItemExcludes>$(DefaultItemExcludes);*.csproj.vspscc</DefaultItemExcludes>
+        <!--<RestoreUseStaticGraphEvaluation>true</RestoreUseStaticGraphEvaluation>-->
+        <Configurations>Debug;Release;DEV;BETA;PROD</Configurations>
+        <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Product>Auth0.Actions</Product>
+        <PackageVersion>1.0.0-pre</PackageVersion>
+        <Authors>CloudNimble</Authors>
+        <Company>CloudNimble, Inc.</Company>
+        <RpmPackageVendor>CloudNimble</RpmPackageVendor>
+        <Copyright>Copyright © 2023 CloudNimble, Inc. All rights reserved.</Copyright>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <!--
+		Suppress a warning about upcoming deprecation of PackageLicenseUrl. When embedding licenses are supported,
+		replace PackageLicenseUrl with PackageLicenseExpression.
+		-->
+        <NoWarn>$(NoWarn);NU5125</NoWarn>
+        <!-- Suppress warnings about using SemVer 2.0. -->
+        <NoWarn>$(NoWarn);NU5105</NoWarn>
+
+        <!-- Contact email address for NuGet packages and Linux installers. -->
+        <MaintainerEmail>opensource@nimbleapps.cloud</MaintainerEmail>
+
+        <PackageIcon>alexis-logo.png</PackageIcon>
+        <PackageProjectUrl>https://restier.readthedocs.io/en/latest/</PackageProjectUrl>
+        <!--<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>-->
+        <PackageTags>alexis;operations;identity;payment;</PackageTags>
+        <Serviceable>true</Serviceable>
+
+        <RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
+        <!--<RepositoryUrl>https://dev.azure.com/cloudnimble/Alexis/</RepositoryUrl>-->
+        <RepositoryType>git</RepositoryType>
+    </PropertyGroup>
+
+    <!-- Compilation options -->
+    <PropertyGroup>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+
+        <!-- Instructs the compiler to use SHA256 instead of SHA1 when adding file hashes to PDBs. -->
+        <ChecksumAlgorithm>SHA256</ChecksumAlgorithm>
+
+        <!-- Fixes a common error in targets implementing a NoBuild mode. -->
+        <BuildProjectReferences Condition=" '$(NoBuild)' == 'true' ">false</BuildProjectReferences>
+
+        <!-- Suppress warnings about uninstantiated classes. -->
+        <NoWarn>$(NoWarn);CA1812</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" $(IsTestProject) == 'true' ">
+        <NoWarn>$(NoWarn);CA1001;CA1707;CA2007;CA1801;CS1591</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" $(IsSampleProject) == 'true' ">
+        <NoWarn>$(NoWarn);CA1001;CA1707;CA1716;CA1801;CA1822</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(IsPrimaryProject)' == 'true' And '$(IsWebProject)' != 'true' ">
+        <NoWarn>$(NoWarn);CA1707</NoWarn>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DocumentationFile>bin\$(Configuration)\$(TargetFramework)</DocumentationFile>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(IsTemplateProject)' == 'true' And '$(IsTemplatePackageProject)' != 'true' ">
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <StandardTestTfms>net7.0</StandardTestTfms>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <SkipDefaultEditorConfigAsAdditionalFile>true</SkipDefaultEditorConfigAsAdditionalFile>
+    </PropertyGroup>
+
+    <ItemGroup Condition=" '$(IsTestProject)' != 'true' and  '$(IsSampleProject)' != 'true'">
+        <!-- RWM: The code quality on the unit tests right now is not awesome, so let's skip checking it for now. -->
+        <!--<PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>-->
+
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+            <_Parameter1>$(AssemblyName.Replace("CloudNimble.Alexis.", "CloudNimble.Alexis.Tests."))</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+
+    <ItemGroup Condition=" $(IsTestProject) == 'true' ">
+        <PackageReference Include="coverlet.collector" Version="6.*" />
+        <PackageReference Include="FluentAssertions" Version="6.*" PrivateAssets="All" />
+        <PackageReference Include="FluentAssertions.Analyzers" Version="0.*" PrivateAssets="All" />
+        <PackageReference Include="MSTest" Version="3.*" />
+    </ItemGroup>
+
+    <!--<ItemGroup>
+        <None Include="$(MSBuildThisFileDirectory)alexis-logo.png" Pack="true" PackagePath="\" Condition="'$(IsPrimaryProject)' == 'true'" />
+    </ItemGroup>-->
+
+</Project>
