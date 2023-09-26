@@ -45,7 +45,7 @@
         <!-- Contact email address for NuGet packages and Linux installers. -->
         <MaintainerEmail>opensource@nimbleapps.cloud</MaintainerEmail>
 
-        <PackageIcon>alexis-logo.png</PackageIcon>
+        <!--<PackageIcon>alexis-logo.png</PackageIcon>-->
         <PackageProjectUrl>https://restier.readthedocs.io/en/latest/</PackageProjectUrl>
         <!--<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>-->
         <PackageTags>alexis;operations;identity;payment;</PackageTags>
