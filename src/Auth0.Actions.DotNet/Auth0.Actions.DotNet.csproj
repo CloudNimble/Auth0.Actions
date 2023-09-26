@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<PackageId>Auth0Actions</PackageId>
 		<RootNamespace>Auth0.Actions</RootNamespace>
 		<TargetFrameworks>net8.0;net7.0;net6.0</TargetFrameworks>
 		<DocumentationFile>$(DocumentationFile)\$(AssemblyName).xml</DocumentationFile>
