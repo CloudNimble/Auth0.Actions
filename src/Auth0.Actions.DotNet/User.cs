@@ -120,6 +120,12 @@ namespace Auth0.Actions
         public TUserMetadata UserMetadata { get; set; }
 
         /// <summary>
+        /// Gets or sets the user's ID.
+        /// </summary>
+        [JsonPropertyName("user_id")]
+        public string UserId { get; set; }
+
+        /// <summary>
         /// Gets or sets the user' username.
         /// </summary>
         [JsonPropertyName("username")]
