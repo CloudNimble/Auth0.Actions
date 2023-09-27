@@ -81,7 +81,7 @@ namespace Auth0.Actions
         /// The Nickname of the user.
         /// </summary>
         [JsonPropertyName("nickname")]
-        public string NickName { get; set; }
+        public string Nickname { get; set; }
 
         /// <summary>
         /// Gets or sets the user's phone number.
