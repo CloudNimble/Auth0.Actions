@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Breakdance.Extensions.MSTest2" Version="*-*" />
+		<PackageReference Include="System.Text.Json" Version="8.*-*" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Baselines\**\*.*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Auth0.Actions.DotNet\Auth0.Actions.DotNet.csproj" />
+	</ItemGroup>
+
+</Project>

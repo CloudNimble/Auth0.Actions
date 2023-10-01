@@ -14,7 +14,7 @@ namespace Auth0.Actions
         /// <summary>
         /// 
         /// </summary>
-        [JsonPropertyName("clientId")]
+        [JsonPropertyName("client_id")]
         public string ClientId { get; set; }
 
         /// <summary>
