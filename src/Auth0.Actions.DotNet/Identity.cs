@@ -12,6 +12,12 @@ namespace Auth0.Actions
         /// <summary>
         /// 
         /// </summary>
+        [JsonPropertyName("accessToken")]
+        public string AccessToken { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [JsonPropertyName("userId")]
         public string AlternateUserId { get; set; }
 

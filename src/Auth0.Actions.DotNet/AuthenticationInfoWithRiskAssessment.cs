@@ -18,7 +18,7 @@ namespace Auth0.Actions
         /// 
         /// </summary>
         [JsonPropertyName("riskAssessment")]
-        public RiskAssessmentInfo RiskAssessment { get; set; }
+        public RiskAssessmentSummary RiskAssessment { get; set; }
 
     }
 

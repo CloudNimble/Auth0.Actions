@@ -57,6 +57,12 @@ namespace Auth0.Actions
         public string FullName { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("identities")]
+        public List<Identity> Identities { get; set; } = new();
+
+        /// <summary>
         /// The last name of the user (if available).
         /// </summary>
         /// <remarks>
@@ -106,6 +112,9 @@ namespace Auth0.Actions
         /// </summary>
         [JsonPropertyName("picture")]
         public string Picture { get; set; }
+
+        [JsonPropertyName("profileData")]
+        public dynamic ProfileData { get; set; }
 
         /// <summary>
         /// 
