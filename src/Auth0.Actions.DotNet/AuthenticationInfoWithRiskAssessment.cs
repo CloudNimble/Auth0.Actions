@@ -12,7 +12,7 @@ namespace Auth0.Actions
 
         /** Contains the authentication methods a user has completed during their session. */
         [JsonPropertyName("methods")]
-        List<AuthenticationMethod> Methods { get; set; }
+        List<AuthenticationMethod> Methods { get; set; } = new();
 
         /// <summary>
         /// 

@@ -14,7 +14,7 @@ namespace Auth0.Actions
         /// 
         /// </summary>
         [JsonPropertyName("roles")]
-        public List<string> Roles { get; set; }
+        public List<string> Roles { get; set; } = new();
 
     }
 

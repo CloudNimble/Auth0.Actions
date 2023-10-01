@@ -38,7 +38,7 @@ namespace Auth0.Actions
         /// 
         /// </summary>
         [JsonPropertyName("prompt")]
-        public string Prompt { get; set; }
+        public List<string> Prompt { get; set; } = new();
 
         /// <summary>
         /// 
@@ -68,7 +68,7 @@ namespace Auth0.Actions
         /// 
         /// </summary>
         [JsonPropertyName("response_type")]
-        public List<string> ResponseType { get; set; }
+        public List<string> ResponseType { get; set; } = new();
 
         /// <summary>
         /// 
@@ -80,7 +80,7 @@ namespace Auth0.Actions
         /// 
         /// </summary>
         [JsonPropertyName("ui_locales")]
-        public List<string> UILocales { get; set; }
+        public List<string> UILocales { get; set; } = new();
 
     }
 
