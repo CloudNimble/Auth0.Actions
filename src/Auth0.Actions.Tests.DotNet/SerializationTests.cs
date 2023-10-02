@@ -11,13 +11,14 @@ namespace Auth0.Actions.Tests.DotNet
     public class SerializationTests
     {
 
-        private const string Request1Path = @"Baselines\Auth0ActionsRequest1.json";
+        private const string PostLoginEvent1 = @"Baselines\PostLoginEvent1.json";
+        private const string CredentialsExchangeEvent1 = @"Baselines\CredentialsExchangeEvent1.json";
 
 
         [TestMethod]
         public async Task PostLoginEvent_CanDeserialize()
         {
-            var content = await File.ReadAllTextAsync(Request1Path);
+            var content = await File.ReadAllTextAsync(PostLoginEvent1);
             content.Should().NotBeNullOrWhiteSpace().And.Contain("client_id");
 
             var postLoginEvent = JsonSerializer.Deserialize<PostLoginEvent<dynamic, dynamic, dynamic, dynamic>>(content);
@@ -76,6 +77,41 @@ namespace Auth0.Actions.Tests.DotNet
             postLoginEvent.User.Identities.Should().ContainSingle();
             postLoginEvent.User.Identities[0].AccessToken.Should().StartWith("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWI");
             postLoginEvent.User.Identities[0].Connection.Should().Be("Username-Password-Authentication");
+        }
+
+        [TestMethod]
+        public async Task CredentialsExchangeEvent_CanDeserialize()
+        {
+            var content = await File.ReadAllTextAsync(CredentialsExchangeEvent1);
+            content.Should().NotBeNullOrWhiteSpace().And.Contain("client_id");
+
+            var postLoginEvent = JsonSerializer.Deserialize<CredentialsExchangeEvent<dynamic, dynamic>>(content);
+            postLoginEvent.Should().NotBeNull();
+
+            postLoginEvent.AccessToken.Should().NotBeNull();
+            //postLoginEvent.AccessToken.CustomClaims.Should().BeEmpty();
+            postLoginEvent.AccessToken.Scopes.Should().HaveCount(1);
+
+            postLoginEvent.Client.Should().NotBeNull();
+            postLoginEvent.Client.ClientId.Should().Be("client-id");
+            postLoginEvent.Client.Name.Should().Be("A Client Application");
+
+            postLoginEvent.Request.Should().NotBeNull();
+            postLoginEvent.Request.IpAddress.Should().Be("10.12.13.1");
+            postLoginEvent.Request.Method.Should().Be("POST");
+            postLoginEvent.Request.Body.Should().NotBeNull();
+            postLoginEvent.Request.Body.Audience.Should().Be("auth0actions.auth0.com/api/v2");
+            postLoginEvent.Request.Body.ClientId.Should().Be("client-id");
+
+            postLoginEvent.ResourceServer.Should().NotBeNull();
+            postLoginEvent.ResourceServer.Identifier.Should().Be("auth0actions.auth0.com/api/v2");
+
+            //postLoginEvent.Secrets.Should().NotBeNull();
+
+            postLoginEvent.Tenant.Should().NotBeNull();
+            postLoginEvent.Tenant.Id.Should().Be("auth0actions");
+
+            postLoginEvent.Transaction.Should().NotBeNull();
         }
 
     }

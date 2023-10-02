@@ -7,7 +7,7 @@ namespace Auth0.Actions
     /// <summary>
     /// 
     /// </summary>
-    public record Transaction
+    public record Transaction : TransactionBase
     {
 
         /// <summary>
@@ -51,12 +51,6 @@ namespace Auth0.Actions
         /// </summary>
         [JsonPropertyName("redirect_uri")]
         public string RedirectUri { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [JsonPropertyName("rquested_scopes")]
-        public string RequestedScopes { get; set; }
 
         /// <summary>
         /// 

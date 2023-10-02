@@ -16,6 +16,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Baselines\CredentialsExchangeEvent1.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\Auth0.Actions.DotNet\Auth0.Actions.DotNet.csproj" />
 	</ItemGroup>
 
