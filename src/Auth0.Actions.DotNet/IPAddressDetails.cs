@@ -11,7 +11,7 @@ namespace Auth0.Actions
         /// <summary>
         /// 
         /// </summary>
-        [JsonPropertyName("Category")]
+        [JsonPropertyName("category")]
         public string Category { get; set; }
 
         /// <summary>

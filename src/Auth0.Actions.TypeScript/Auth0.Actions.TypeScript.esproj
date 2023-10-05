@@ -1,11 +1,9 @@
 ﻿<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.111-alpha">
-  <ItemGroup>
-    <TypeScriptConfiguration Remove="dist\**\*.*" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="dist\**\*.*" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="*.tgz" />
-  </ItemGroup>
+	<ItemGroup>
+		<TypeScriptConfiguration Remove="dist\**\*.*" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="dist\**\*.*" />
+		<None Remove="*.tgz" />
+	</ItemGroup>
 </Project>

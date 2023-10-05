@@ -1,6 +1,37 @@
 
-//#region Post-Login Event
+//#region Events
 
+/**
+ * 
+ */
+export interface CredentialsExchangeEvent<TSecret, TClientMetadata> {
+
+    /** An object containing information describing the authorization granted to the user who is logging in. */
+    accessToken?: AccessToken;
+
+    /**  */
+    client?: Client<TClientMetadata>;
+
+    /**  */
+    request?: RequestBase<CredentialsExchangeRequestBody>;
+
+    /**  */
+    resource_server?: ResourceServer;
+
+    /**  */
+    secrets?: TSecret;
+
+    /**  */
+    tenant?: Tenant;
+
+    /**  */
+    transaction?: TransactionBase;
+
+}
+
+/**
+ * 
+ */
 export interface PostLoginEvent<TSecret, TClientMetadata, TAppMetadata, TUserMetadata> {
 
     /** Details about authentication signals obtained during the login flow. */
@@ -22,7 +53,7 @@ export interface PostLoginEvent<TSecret, TClientMetadata, TAppMetadata, TUserMet
     organization?: Organization;
 
     /**  */
-    request?: RequestBase;
+    request?: Request<any>;
 
     /**  */
     resource_server?: ResourceServer;
@@ -44,6 +75,15 @@ export interface PostLoginEvent<TSecret, TClientMetadata, TAppMetadata, TUserMet
 }
 
 /**
+ * 
+ */
+interface AccessToken {
+
+    customClaims: any;
+    scope: string[];
+}
+
+/**
  * Details about authentication signals obtained during the login flow.
  */
 interface AuthenticationInfoWithRiskAssessment {
@@ -51,7 +91,7 @@ interface AuthenticationInfoWithRiskAssessment {
     /** Contains the authentication methods a user has completed during their session. */
     methods: AuthenticationMethod[];
 
-    riskAssessment?: RiskAssessmentInfo;
+    riskAssessment?: RiskAssessmentSummary;
 }
 
 /**
@@ -96,10 +136,16 @@ enum AuthenticationMethods {
     mock = 'mock'
 }
 
+/**
+ * 
+ */
 interface AuthorizationInfo {
     roles: string[];
 }
 
+/**
+ * 
+ */
 interface Client<TMetadata> {
 
     /** The client id of the application the user is logging in to. */
@@ -115,10 +161,16 @@ interface Client<TMetadata> {
     strategy: string;
 }
 
+/**
+ * 
+ */
 interface Configuration {
 
 }
 
+/**
+ * 
+ */
 interface Connection {
 
     /**
@@ -143,6 +195,9 @@ interface Connection {
 
 }
 
+/**
+ * 
+ */
 enum ConnectionStrategies {
     ad = 'ad',
     adfs = 'adfs',
@@ -207,6 +262,19 @@ enum ConnectionStrategies {
     yandex = 'yandex',
 }
 
+/**
+ * 
+ */
+interface CredentialsExchangeRequestBody {
+    audience: string;
+    client_id: string;
+    client_secret: string;
+    grant_type: string;
+}
+
+/**
+ * 
+ */
 interface GeoIP {
     cityName: string
     continentCode: string
@@ -220,6 +288,9 @@ interface GeoIP {
     timeZone: string
 }
 
+/**
+ * 
+ */
 interface Identity {
     connection: string
     isSocial: boolean
@@ -228,6 +299,27 @@ interface Identity {
     user_id: string
 }
 
+/**
+ * 
+ */
+interface IPAddressDetails {
+    category: string;
+    ip: string;
+    matches: string;
+    source: string;
+}
+
+/**
+ * 
+ */
+interface NewDeviceDetails {
+    device: string;
+    useragent: string;
+}
+
+/**
+ * 
+ */
 interface Organization {
 
     /* The friendly name of the Organization. */
@@ -250,6 +342,9 @@ interface Organization {
 
 }
 
+/**
+ * 
+ */
 interface Query {
     audience: string
     client_id: string
@@ -263,35 +358,86 @@ interface Query {
     state: string
 }
 
-interface RequestBase {
-    ip: string;
-    method: string;
+/**
+ * 
+ */
+interface Request<TBody> extends RequestBase<TBody> {
     query: Query;
-    body: RequestBody;
+}
+
+/**
+ * 
+ */
+interface RequestBase<TBody> {
+    body: TBody;
     geoip: GeoIP;
     hostname: string;
+    ip: string;
+    method: string;
     user_agent: string;
 }
 
-interface RequestBody { }
-
+/**
+ * 
+ */
 interface ResourceServer {
     identifier: string
 }
 
-interface RiskAssessmentInfo {
+interface RiskAssessmentBase {
+
+    code: string;
+
+    confidence: string;
+}
+
+/**
+ * 
+ */
+interface RiskAssessmentSummary {
+    assessments: RiskAssessments;
     confidence: "low" | "medium" | "high" | "neutral";
     version: string;
 }
 
+/**
+ * 
+ */
+interface RiskAssessments {
+
+    ImpossibleTravel: RiskAssessmentBase;
+
+    NewDevice: RiskAssessmentWithDetails<NewDeviceDetails>
+
+    UntrustedIP: RiskAssessmentWithDetails<IPAddressDetails>
+}
+
+/**
+ * 
+ */
+interface RiskAssessmentWithDetails<TDetails> {
+
+    details: TDetails;
+}
+
+/**
+ * 
+ */
 interface Stats {
     logins_count: number
 }
 
+/**
+ * 
+ */
 interface Tenant {
     id: string
 }
-interface Transaction {
+
+/**
+ * 
+ */
+interface Transaction extends TransactionBase {
     acr_values: any[]
     linking_id?: string
     locale: string
@@ -299,13 +445,22 @@ interface Transaction {
     prompt: string[]
     protocol?: TransactionProtocols
     redirect_uri?: string
-    requested_scopes: string[]
     response_mode?: string
     response_type?: string[]
     state?: string
     ui_locales: string[]
 }
 
+/**
+ * 
+ */
+interface TransactionBase {
+    requested_scopes: string[]
+}
+
+/**
+ * 
+ */
 enum TransactionProtocols {
     oidc_basic = 'oidc-basic-profile',
     /*  Allows your application to have immediate access to an ID token while still providing for secure and safe retrieval of access and refresh tokens. */
@@ -323,7 +478,9 @@ enum TransactionProtocols {
     oauth2_token_exchange = 'oauth2-token-exchange',
 }
 
-
+/**
+ * 
+ */
 export interface UserBase<TAppMetadata, TUserMetadata> {
 
     /** Data that the user has read-only access to (e.g. roles, permissions, vip, etc) */
@@ -383,15 +540,15 @@ export interface UserBase<TAppMetadata, TUserMetadata> {
 
 //#endregion
 
-//#region Post-Login API
+//#region Actions APIs
 
-export interface PostLoginApi {
+export interface PostLoginApi extends ActionsApiBase<PostLoginApi> {
 
     /** Modify the user's login access, such as by rejecting the login attempt. */
-    access: LoginAccessManager;
+    access: LoginAccessManager<PostLoginApi>;
 
     /** Request changes to the access token being issued. */
-    accessToken: AccessTokenManager;
+    accessToken: AccessTokenManager<PostLoginApi>;
 
     /**  */
     authentication: AuthenticationManager;
@@ -412,26 +569,43 @@ export interface PostLoginApi {
     user: UserManager;
 }
 
-export interface AccessTokenManager {
+export interface AccessTokenManager<TApi extends ActionsApiBase<TApi>> extends AccessTokenManagerBase<TApi> {
 
     /**
      * Add a scope on the Access Token that will be issued upon completion of the login flow.
      * @param scope The scope to be added.
      */
-    addScope(scope: string): PostLoginApi;
+    addScope(scope: string): TApi;
 
     /**
      * Remove a scope on the Access Token that will be issued upon completion of the login flow.
      * @param scope The scope to be removed.
      */
-    removeScope(scope: string): PostLoginApi;
+    removeScope(scope: string): TApi;
+
+}
+
+export interface AccessTokenManagerBase<TApi extends ActionsApiBase<TApi>> {
 
     /**
      * Set a custom claim on the Access Token that will be issued upon completion of the login flow.
      * @param name Name of the claim (note that this may need to be a fully-qualified URL).
      * @param value The value of the claim.
      */
-    setCustomClaim(name: string, value: any): PostLoginApi;
+    setCustomClaim(name: string, value: any): TApi;
+}
+
+export interface ActionsApiBase<TApi extends ActionsApiBase<TApi>> {
+
+    /** Modify the user's login access, such as by rejecting the login attempt. */
+    access: LoginAccessManager<TApi>;
+
+    /** Request changes to the access token being issued. */
+    accessToken: AccessTokenManagerBase<TApi>;
+
+    /** Store and retrieve data that persists across executions. */
+    cache: CacheManager;
+
 }
 
 export interface AuthenticationManager {
@@ -555,6 +729,19 @@ export enum ChallengeTypes {
     webauthn_roaming = 'webauthn-roaming'
 }
 
+export interface CredentialsExchangeApi extends ActionsApiBase<CredentialsExchangeApi> {
+
+    /** Control availability to the access token. */
+    access: LoginAccessManager<CredentialsExchangeApi>;
+
+    /** Request changes to the access token being issued. */
+    accessToken: AccessTokenManagerBase<CredentialsExchangeApi>;
+
+    /** Store and retrieve data that persists across executions. */
+    cache: CacheManager;
+
+}
+
 export interface DuoMultifactorOptions {
     host: string
     ikey: string
@@ -582,7 +769,7 @@ export interface IdTokenManager {
     setCustomClaim(name: string, value: any): PostLoginApi
 }
 
-export interface LoginAccessManager {
+export interface LoginAccessManager<TApi extends ActionsApiBase<TApi>> {
 
     /**
      * Mark the current login attempt as denied. This will prevent the end-user from completing the login flow. This will NOT cancel other user-related 
@@ -590,7 +777,7 @@ export interface LoginAccessManager {
      * and no further Actions will be executed.
      * @param reason A human-readable explanation for rejecting the login. This may be presented directly in end-user interfaces.
      */
-    deny(reason: string): PostLoginApi;
+    deny(reason: string): TApi;
 }
 
 export interface MultifactorManager {
@@ -653,6 +840,3 @@ export interface ValidateTokenOptions {
 }
 
 //#endregion
-
-
-//notes: make a C# version too.
