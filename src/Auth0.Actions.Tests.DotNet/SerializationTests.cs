@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Auth0.Actions.Tests.DotNet
@@ -51,7 +52,7 @@ namespace Auth0.Actions.Tests.DotNet
             postLoginEvent.Connection.Should().NotBeNull();
             postLoginEvent.Connection.Id.Should().Be("con_fpe5kj482KO1eOzQ");
             postLoginEvent.Connection.Name.Should().Be("Username-Password-Authentication");
-            postLoginEvent.Connection.Strategy.Should().Be("auth0");
+            postLoginEvent.Connection.Strategy.Should().Be(ConnectionStrategies.Auth0);
 
             postLoginEvent.Organization.Should().NotBeNull();
             postLoginEvent.Organization.DisplayName.Should().Be("My Organization");
@@ -112,6 +113,28 @@ namespace Auth0.Actions.Tests.DotNet
             postLoginEvent.Tenant.Id.Should().Be("auth0actions");
 
             postLoginEvent.Transaction.Should().NotBeNull();
+        }
+
+        [TestMethod]
+        public void ConnectionStrategies_CanDeserialize()
+        {
+            var test1 = new
+            {
+                Test1 = ConnectionStrategies.AD,
+                Test2 = ConnectionStrategies.Auth0_Oidc,
+                Test3 = ConnectionStrategies.Exact
+            };
+
+            var result = JsonSerializer.Serialize(test1);
+
+            result.Should().NotBeNullOrWhiteSpace();
+        }
+
+
+        private class Test2
+        {
+
+
         }
 
     }

@@ -32,7 +32,7 @@ namespace Auth0.Actions
         /// 
         /// </summary>
         [JsonPropertyName("strategy")]
-        public string Strategy { get; set; }
+        public ConnectionStrategies Strategy { get; set; }
 
     }
 
