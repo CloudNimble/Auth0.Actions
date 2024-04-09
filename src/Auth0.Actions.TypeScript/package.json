@@ -1,6 +1,6 @@
 {
   "name": "auth0-actions",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Type definitions and utilities for building Auth0 Actions.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,10 +16,10 @@
   "author": "CloudNimble, Inc. opensource@nimbleapps.cloud",
   "license": "MIT",
   "dependencies": {
-    "auth0": "^4.0.1"
+    "auth0": "^4.3.1"
   },
   "devDependencies": {
-    "@types/auth0": "^3.3.6",
+    "@types/auth0": "^3.3.10",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
     "eslint": "^8.50.0",

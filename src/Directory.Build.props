@@ -31,7 +31,7 @@
         <Authors>CloudNimble</Authors>
         <Company>CloudNimble, Inc.</Company>
         <RpmPackageVendor>CloudNimble</RpmPackageVendor>
-        <Copyright>Copyright © 2023 CloudNimble, Inc. All rights reserved.</Copyright>
+        <Copyright>Copyright © 2023-2024 CloudNimble, Inc. All rights reserved.</Copyright>
         <NeutralLanguage>en-US</NeutralLanguage>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <!--
@@ -46,13 +46,13 @@
         <MaintainerEmail>opensource@nimbleapps.cloud</MaintainerEmail>
 
         <!--<PackageIcon>alexis-logo.png</PackageIcon>-->
-        <PackageProjectUrl>https://restier.readthedocs.io/en/latest/</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/CloudNimble/Auth0.Actions</PackageProjectUrl>
         <!--<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>-->
-        <PackageTags>alexis;operations;identity;payment;</PackageTags>
+        <PackageTags>auth0;actions</PackageTags>
         <Serviceable>true</Serviceable>
 
         <RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
-        <!--<RepositoryUrl>https://dev.azure.com/cloudnimble/Alexis/</RepositoryUrl>-->
+        <RepositoryUrl>https://github.com/CloudNimble/Auth0.Actions.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
@@ -107,7 +107,7 @@
     </PackageReference>-->
 
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-            <_Parameter1>$(AssemblyName.Replace("CloudNimble.Alexis.", "CloudNimble.Alexis.Tests."))</_Parameter1>
+            <_Parameter1>$(AssemblyName.Replace("Auth0.Actions.", "Auth0.Actions.Tests."))</_Parameter1>
         </AssemblyAttribute>
     </ItemGroup>
 

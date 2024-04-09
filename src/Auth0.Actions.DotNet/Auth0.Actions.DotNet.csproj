@@ -3,13 +3,24 @@
 	<PropertyGroup>
 		<PackageId>Auth0Actions</PackageId>
 		<RootNamespace>Auth0.Actions</RootNamespace>
-		<TargetFrameworks>net8.0;net7.0;net6.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net7.0;net6.0;</TargetFrameworks>
 		<DocumentationFile>$(DocumentationFile)\$(AssemblyName).xml</DocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Macross.Json.Extensions" Version="3.0.0" />
-		<PackageReference Include="System.Text.Json" Version="7.0.3" />
+		<PackageReference Include="Macross.Json.Extensions" Version="3.*" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+		<PackageReference Include="System.Text.Json" Version="[8.*-*, 9.0.0)" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+		<PackageReference Include="System.Text.Json" Version="[7.*-*, 9.0.0)" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+		<PackageReference Include="System.Text.Json" Version="[6.*-*, 9.0.0)" />
 	</ItemGroup>
 
 </Project>

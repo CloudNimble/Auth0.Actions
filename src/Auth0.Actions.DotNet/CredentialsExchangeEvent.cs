@@ -8,9 +8,11 @@ namespace Auth0.Actions
     /// </summary>
     /// <typeparam name="TSecret"></typeparam>
     /// <typeparam name="TClientMetadata"></typeparam>
-    public record CredentialsExchangeEvent<TSecret, TClientMetadata>
+    /// <typeparam name="TRequest"></typeparam>
+    public record CredentialsExchangeEvent<TSecret, TClientMetadata, TRequest>
         where TSecret : class
         where TClientMetadata : class
+        where TRequest : CredentialsExchangeRequestBody
     {
 
         /// <summary>
@@ -29,7 +31,7 @@ namespace Auth0.Actions
         /// 
         /// </summary>
         [JsonPropertyName("request")]
-        public RequestBase<CredentialsExchangeRequestBody> Request { get; set; }
+        public RequestBase<TRequest> Request { get; set; }
 
         /// <summary>
         /// 

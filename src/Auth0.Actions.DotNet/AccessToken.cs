@@ -5,7 +5,7 @@ namespace Auth0.Actions
 {
 
     /// <summary>
-    /// 
+    /// Information about the access token to be issued.
     /// </summary>
     public record AccessToken
     {

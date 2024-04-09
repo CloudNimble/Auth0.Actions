@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using Auth0.Actions.Tests.DotNet.Models;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Text.Json;
@@ -86,7 +87,7 @@ namespace Auth0.Actions.Tests.DotNet
             var content = await File.ReadAllTextAsync(CredentialsExchangeEvent1);
             content.Should().NotBeNullOrWhiteSpace().And.Contain("client_id");
 
-            var postLoginEvent = JsonSerializer.Deserialize<CredentialsExchangeEvent<dynamic, dynamic>>(content);
+            var postLoginEvent = JsonSerializer.Deserialize<CredentialsExchangeEvent<dynamic, dynamic, ExtendedCredentialsExchangeRequestBody>>(content);
             postLoginEvent.Should().NotBeNull();
 
             postLoginEvent.AccessToken.Should().NotBeNull();
@@ -103,6 +104,9 @@ namespace Auth0.Actions.Tests.DotNet
             postLoginEvent.Request.Body.Should().NotBeNull();
             postLoginEvent.Request.Body.Audience.Should().Be("auth0actions.auth0.com/api/v2");
             postLoginEvent.Request.Body.ClientId.Should().Be("client-id");
+            postLoginEvent.Request.Body.ClientSecret.Should().Be("client-secret");
+            postLoginEvent.Request.Body.GrantType.Should().Be("client_credentials");
+            postLoginEvent.Request.Body.ExtraParam.Should().Be("extravalue");
 
             postLoginEvent.ResourceServer.Should().NotBeNull();
             postLoginEvent.ResourceServer.Identifier.Should().Be("auth0actions.auth0.com/api/v2");

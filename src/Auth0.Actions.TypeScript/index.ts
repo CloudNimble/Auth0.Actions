@@ -4,7 +4,7 @@
 /**
  * 
  */
-export interface CredentialsExchangeEvent<TSecret, TClientMetadata> {
+export interface CredentialsExchangeEvent<TSecret, TClientMetadata, TRequest extends CredentialsExchangeRequestBody> {
 
     /** An object containing information describing the authorization granted to the user who is logging in. */
     accessToken?: AccessToken;
@@ -13,7 +13,7 @@ export interface CredentialsExchangeEvent<TSecret, TClientMetadata> {
     client?: Client<TClientMetadata>;
 
     /**  */
-    request?: RequestBase<CredentialsExchangeRequestBody>;
+    request?: RequestBase<TRequest>;
 
     /**  */
     resource_server?: ResourceServer;
