@@ -1,6 +1,6 @@
 {
   "name": "auth0-actions",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Type definitions and utilities for building Auth0 Actions.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

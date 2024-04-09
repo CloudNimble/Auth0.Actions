@@ -77,7 +77,7 @@ export interface PostLoginEvent<TSecret, TClientMetadata, TAppMetadata, TUserMet
 /**
  * 
  */
-interface AccessToken {
+export interface AccessToken {
 
     customClaims: any;
     scope: string[];
@@ -86,7 +86,7 @@ interface AccessToken {
 /**
  * Details about authentication signals obtained during the login flow.
  */
-interface AuthenticationInfoWithRiskAssessment {
+export interface AuthenticationInfoWithRiskAssessment {
 
     /** Contains the authentication methods a user has completed during their session. */
     methods: AuthenticationMethod[];
@@ -97,7 +97,7 @@ interface AuthenticationInfoWithRiskAssessment {
 /**
  * 
  */
-interface AuthenticationMethod {
+export interface AuthenticationMethod {
     /**
      * The name of the first factor that was completed. Values include the following:
      */
@@ -112,7 +112,7 @@ interface AuthenticationMethod {
 /**
  * 
  */
-enum AuthenticationMethods {
+export enum AuthenticationMethods {
 
     /** A social or enterprise connection was used to authenticate the user as the first factor. */
     federated = 'federated',
@@ -139,14 +139,14 @@ enum AuthenticationMethods {
 /**
  * 
  */
-interface AuthorizationInfo {
+export interface AuthorizationInfo {
     roles: string[];
 }
 
 /**
  * 
  */
-interface Client<TMetadata> {
+export interface Client<TMetadata> {
 
     /** The client id of the application the user is logging in to. */
     clientId: string;
@@ -164,14 +164,14 @@ interface Client<TMetadata> {
 /**
  * 
  */
-interface Configuration {
+export interface Configuration {
 
 }
 
 /**
  * 
  */
-interface Connection {
+export interface Connection {
 
     /**
      * The connection's identifier
@@ -198,7 +198,7 @@ interface Connection {
 /**
  * 
  */
-enum ConnectionStrategies {
+export enum ConnectionStrategies {
     ad = 'ad',
     adfs = 'adfs',
     amazon = 'amazon',
@@ -265,7 +265,7 @@ enum ConnectionStrategies {
 /**
  * 
  */
-interface CredentialsExchangeRequestBody {
+export interface CredentialsExchangeRequestBody {
     audience: string;
     client_id: string;
     client_secret: string;
@@ -275,7 +275,7 @@ interface CredentialsExchangeRequestBody {
 /**
  * 
  */
-interface GeoIP {
+export interface GeoIP {
     cityName: string
     continentCode: string
     countryCode3: string
@@ -291,7 +291,7 @@ interface GeoIP {
 /**
  * 
  */
-interface Identity {
+export interface Identity {
     connection: string
     isSocial: boolean
     provider: string
@@ -302,7 +302,7 @@ interface Identity {
 /**
  * 
  */
-interface IPAddressDetails {
+export interface IPAddressDetails {
     category: string;
     ip: string;
     matches: string;
@@ -312,7 +312,7 @@ interface IPAddressDetails {
 /**
  * 
  */
-interface NewDeviceDetails {
+export interface NewDeviceDetails {
     device: string;
     useragent: string;
 }
@@ -320,7 +320,7 @@ interface NewDeviceDetails {
 /**
  * 
  */
-interface Organization {
+export interface Organization {
 
     /* The friendly name of the Organization. */
     display_name: string;
@@ -345,7 +345,7 @@ interface Organization {
 /**
  * 
  */
-interface Query {
+export interface Query {
     audience: string
     client_id: string
     code_challenge: string
@@ -361,14 +361,14 @@ interface Query {
 /**
  * 
  */
-interface Request<TBody> extends RequestBase<TBody> {
+export interface Request<TBody> extends RequestBase<TBody> {
     query: Query;
 }
 
 /**
  * 
  */
-interface RequestBase<TBody> {
+export interface RequestBase<TBody> {
     body: TBody;
     geoip: GeoIP;
     hostname: string;
@@ -380,11 +380,11 @@ interface RequestBase<TBody> {
 /**
  * 
  */
-interface ResourceServer {
+export interface ResourceServer {
     identifier: string
 }
 
-interface RiskAssessmentBase {
+export interface RiskAssessmentBase {
 
     code: string;
 
@@ -394,7 +394,7 @@ interface RiskAssessmentBase {
 /**
  * 
  */
-interface RiskAssessmentSummary {
+export interface RiskAssessmentSummary {
     assessments: RiskAssessments;
     confidence: "low" | "medium" | "high" | "neutral";
     version: string;
@@ -403,7 +403,7 @@ interface RiskAssessmentSummary {
 /**
  * 
  */
-interface RiskAssessments {
+export interface RiskAssessments {
 
     ImpossibleTravel: RiskAssessmentBase;
 
@@ -415,7 +415,7 @@ interface RiskAssessments {
 /**
  * 
  */
-interface RiskAssessmentWithDetails<TDetails> {
+export interface RiskAssessmentWithDetails<TDetails> {
 
     details: TDetails;
 }
@@ -423,21 +423,21 @@ interface RiskAssessmentWithDetails<TDetails> {
 /**
  * 
  */
-interface Stats {
+export interface Stats {
     logins_count: number
 }
 
 /**
  * 
  */
-interface Tenant {
+export interface Tenant {
     id: string
 }
 
 /**
  * 
  */
-interface Transaction extends TransactionBase {
+export interface Transaction extends TransactionBase {
     acr_values: any[]
     linking_id?: string
     locale: string
@@ -454,14 +454,14 @@ interface Transaction extends TransactionBase {
 /**
  * 
  */
-interface TransactionBase {
+export interface TransactionBase {
     requested_scopes: string[]
 }
 
 /**
  * 
  */
-enum TransactionProtocols {
+export enum TransactionProtocols {
     oidc_basic = 'oidc-basic-profile',
     /*  Allows your application to have immediate access to an ID token while still providing for secure and safe retrieval of access and refresh tokens. */
     oidc_hybrid = 'oidc-hybrid',
