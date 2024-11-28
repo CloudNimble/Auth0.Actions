@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net7.0;net6.0;</TargetFrameworks>
+		<TargetFrameworks>net9.0;net8.0;</TargetFrameworks>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Breakdance.Extensions.MSTest2" Version="*-*" />
-		<PackageReference Include="System.Text.Json" Version="8.*-*" />
+		<PackageReference Include="System.Text.Json" Version="9.*-*" />
 	</ItemGroup>
 
 	<ItemGroup>
