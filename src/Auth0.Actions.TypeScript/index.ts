@@ -149,7 +149,7 @@ export interface AuthorizationInfo {
 export interface Client<TMetadata> {
 
     /** The client id of the application the user is logging in to. */
-    clientId: string;
+    client_id: string;
 
     /** An object for holding other application properties. */
     metadata: TMetadata
