@@ -1,0 +1,20 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="BETA" />
+    <BuildType Name="Debug" />
+    <BuildType Name="DEV" />
+    <BuildType Name="PROD" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Folder Name="/Core/">
+    <Project Path="Auth0.Actions.DotNet/Auth0.Actions.DotNet.csproj" />
+  </Folder>
+  <Folder Name="/Samples/" />
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
+    <File Path="global.json" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Auth0.Actions.Tests.DotNet/Auth0.Actions.Tests.DotNet.csproj" />
+  </Folder>
+</Solution>

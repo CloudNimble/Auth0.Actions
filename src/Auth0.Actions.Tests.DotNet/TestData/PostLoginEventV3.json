@@ -1,0 +1,172 @@
+{
+  "authentication": {
+    "methods": [
+      {
+        "name": "pwd",
+        "timestamp": "2024-01-15T10:30:00.000Z"
+      },
+      {
+        "name": "mfa",
+        "timestamp": "2024-01-15T10:30:15.000Z",
+        "type": "otp"
+      }
+    ],
+    "riskAssessment": {
+      "version": "1",
+      "confidence": "low",
+      "assessments": {}
+    }
+  },
+  "authorization": {
+    "roles": ["admin", "user"]
+  },
+  "client": {
+    "client_id": "test-client-123",
+    "name": "Test Application",
+    "metadata": {
+      "environment": "production",
+      "version": "1.0.0"
+    }
+  },
+  "configuration": {
+    "setting1": "value1",
+    "setting2": "value2"
+  },
+  "connection": {
+    "id": "con_abc123",
+    "name": "Username-Password-Authentication",
+    "strategy": "auth0"
+  },
+  "custom_domain": {
+    "id": "cd_123",
+    "domain": "login.example.com",
+    "primary": true,
+    "status": "ready",
+    "type": "auth0_managed_certs"
+  },
+  "organization": {
+    "id": "org_123",
+    "name": "my-org",
+    "display_name": "My Organization"
+  },
+  "prompt": {
+    "data": {
+      "custom_field": "custom_value"
+    }
+  },
+  "refresh_token": {
+    "id": "rt_123",
+    "rotate": true,
+    "expires_at": 1704067815,
+    "scopes": ["openid", "profile", "email"],
+    "audience": ["https://api.example.com"],
+    "use_count": 0,
+    "max_uses": 100,
+    "idle_expires_at": 1704154215
+  },
+  "request": {
+    "ip": "192.168.1.1",
+    "method": "POST",
+    "user_agent": "Mozilla/5.0",
+    "query": {},
+    "asn": "AS15169",
+    "geoip": {
+      "city_name": "San Francisco",
+      "continent_code": "NA",
+      "country_code": "US",
+      "country_code3": "USA",
+      "country_name": "United States",
+      "latitude": 37.7749,
+      "longitude": -122.4194,
+      "time_zone": "America/Los_Angeles"
+    }
+  },
+  "resource_server": {
+    "identifier": "https://api.example.com",
+    "name": "My API"
+  },
+  "secrets": {
+    "api_key": "secret-key-123",
+    "webhook_url": "https://example.com/webhook"
+  },
+  "security_context": {
+    "ja3": "abc123def456",
+    "ja4": "xyz789uvw012"
+  },
+  "session": {
+    "id": "sess_123",
+    "created_at": 1704067815,
+    "expires_at": 1704154215,
+    "authentication_methods": ["pwd", "mfa"],
+    "last_interacted_at": 1704067815,
+    "idle_expires_at": 1704154215
+  },
+  "session_transfer_token": {
+    "token": "stt_token_123",
+    "expires_at": 1704067815
+  },
+  "stats": {
+    "loginsCount": 42
+  },
+  "tenant": {
+    "id": "tenant-123"
+  },
+  "transaction": {
+    "id": "tx_123",
+    "correlation_id": "corr_456",
+    "metadata": {
+      "source": "web"
+    },
+    "requested_scopes": "openid profile email",
+    "acr_values": ["http://schemas.openid.net/pape/policies/2007/06/multi-factor"],
+    "linking_id": "link_123",
+    "locale": "en-US",
+    "login_hint": "user@example.com",
+    "prompt": ["login"],
+    "protocol": "oidc-basic-profile",
+    "redirect_uri": "https://example.com/callback",
+    "response_mode": "form_post",
+    "response_type": ["code"],
+    "state": "state_123",
+    "ui_locales": ["en-US"]
+  },
+  "user": {
+    "user_id": "auth0|123456",
+    "email": "user@example.com",
+    "email_verified": true,
+    "name": "Test User",
+    "nickname": "testuser",
+    "picture": "https://example.com/avatar.jpg",
+    "created_at": "2023-01-01T00:00:00.000Z",
+    "updated_at": "2024-01-15T10:30:00.000Z",
+    "app_metadata": {
+      "role": "admin",
+      "permissions": ["read", "write"]
+    },
+    "user_metadata": {
+      "theme": "dark",
+      "language": "en"
+    },
+    "identities": [
+      {
+        "connection": "Username-Password-Authentication",
+        "user_id": "123456",
+        "provider": "auth0",
+        "isSocial": false,
+        "access_token": "token123",
+        "profileData": {
+          "email": "user@example.com",
+          "name": "Test User"
+        }
+      }
+    ],
+    "enrolled_factors": [
+      {
+        "type": "otp",
+        "name": "Authenticator App",
+        "created_at": "2024-01-01T00:00:00.000Z",
+        "last_auth": "2024-01-15T10:30:15.000Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "client": {
+    "client_id": "reg-client-v2-123",
+    "name": "Registration Application V2",
+    "metadata": {
+      "app_type": "spa"
+    }
+  },
+  "connection": {
+    "id": "con_v2_456",
+    "name": "Username-Password-Authentication",
+    "strategy": "auth0"
+  },
+  "request": {
+    "ip": "203.0.113.1",
+    "method": "POST",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+    "query": {}
+  },
+  "secrets": {
+    "api_key": "secret-v2-key-123"
+  },
+  "tenant": {
+    "id": "tenant-v2-789"
+  },
+  "user": {
+    "email": "newuser.v2@example.com",
+    "username": "newuserv2",
+    "email_verified": false,
+    "app_metadata": {
+      "plan": "starter"
+    },
+    "user_metadata": {
+      "theme": "auto"
+    }
+  }
+}

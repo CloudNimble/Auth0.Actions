@@ -1,0 +1,22 @@
+{
+  "event": {
+    "event_type": "sapi",
+    "timestamp": "2025-02-04T20:00:00.000Z",
+    "event_id": "evt_123456",
+    "data": {
+      "description": "User login",
+      "client_id": "client-123",
+      "client_name": "Test App",
+      "user_id": "auth0|123456",
+      "user_name": "user@example.com",
+      "ip": "192.168.1.1",
+      "user_agent": "Mozilla/5.0"
+    }
+  },
+  "secrets": {
+    "webhook_key": "secret-key-123"
+  },
+  "tenant": {
+    "id": "tenant-789"
+  }
+}

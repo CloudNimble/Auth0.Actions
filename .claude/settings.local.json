@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(ls:*)",
+      "Bash(xargs:*)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:auth0.com)",
+      "Bash(git mv:*)"
+    ]
+  }
+}

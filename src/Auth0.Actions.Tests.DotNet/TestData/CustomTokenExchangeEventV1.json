@@ -1,0 +1,22 @@
+{
+  "transaction": {
+    "requested_scopes": "openid profile email"
+  },
+  "request": {
+    "ip": "192.168.1.1",
+    "method": "POST",
+    "user_agent": "Custom-Client/1.0",
+    "query": {},
+    "body": {
+      "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+      "subject_token": "eyJ...",
+      "subject_token_type": "urn:ietf:params:oauth:token-type:jwt"
+    }
+  },
+  "secrets": {
+    "api_key": "secret-key-123"
+  },
+  "tenant": {
+    "id": "tenant-789"
+  }
+}

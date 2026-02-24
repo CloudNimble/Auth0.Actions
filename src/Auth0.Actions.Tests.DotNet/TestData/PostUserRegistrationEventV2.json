@@ -1,0 +1,27 @@
+{
+  "client": {
+    "client_id": "reg-client-v2-123",
+    "name": "Registration Application V2"
+  },
+  "connection": {
+    "id": "con_v2_456",
+    "name": "Username-Password-Authentication",
+    "strategy": "auth0"
+  },
+  "request": {
+    "ip": "203.0.113.1",
+    "method": "POST",
+    "user_agent": "Mozilla/5.0"
+  },
+  "secrets": {
+    "api_key": "secret-v2-key-123"
+  },
+  "tenant": {
+    "id": "tenant-v2-789"
+  },
+  "user": {
+    "user_id": "auth0|v2_123456",
+    "email": "newuser.v2@example.com",
+    "created_at": "2025-01-15T00:00:00.000Z"
+  }
+}

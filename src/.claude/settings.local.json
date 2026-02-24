@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:auth0.com)",
+      "Bash(npm view:*)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:unpkg.com)",
+      "WebFetch(domain:app.unpkg.com)"
+    ]
+  }
+}

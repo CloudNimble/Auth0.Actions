@@ -1,0 +1,17 @@
+{
+  "recipient": {
+    "email": "user@example.com",
+    "user_id": "auth0|123456"
+  },
+  "email": {
+    "subject": "Verify your email",
+    "body": "Click here to verify: https://example.com/verify?token=abc123",
+    "type": "verification"
+  },
+  "secrets": {
+    "email_provider_key": "secret-key-123"
+  },
+  "tenant": {
+    "id": "tenant-789"
+  }
+}

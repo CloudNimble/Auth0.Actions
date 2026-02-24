@@ -1,0 +1,38 @@
+{
+  "authentication": {
+    "methods": [
+      {
+        "name": "pwd",
+        "timestamp": "2025-02-04T20:00:00.000Z"
+      }
+    ]
+  },
+  "client": {
+    "client_id": "login-client-v2-123",
+    "name": "Login App V2"
+  },
+  "connection": {
+    "id": "con_v2_456",
+    "name": "Username-Password-Authentication",
+    "strategy": "auth0"
+  },
+  "request": {
+    "ip": "203.0.113.1",
+    "method": "POST",
+    "user_agent": "Mozilla/5.0"
+  },
+  "secrets": {
+    "api_key": "secret-v2-key-123"
+  },
+  "tenant": {
+    "id": "tenant-v2-789"
+  },
+  "transaction": {
+    "requested_scopes": "openid profile"
+  },
+  "user": {
+    "user_id": "auth0|v2_123456",
+    "email": "user.v2@example.com",
+    "email_verified": true
+  }
+}

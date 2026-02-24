@@ -1,0 +1,11 @@
+{
+  "message_text": "Your verification code is 123456",
+  "message_type": "enrollment",
+  "recipient": "+15551234567",
+  "secrets": {
+    "sms_provider_key": "secret-key-123"
+  },
+  "tenant": {
+    "id": "tenant-789"
+  }
+}

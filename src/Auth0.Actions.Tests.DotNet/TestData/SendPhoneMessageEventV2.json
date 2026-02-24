@@ -1,0 +1,11 @@
+{
+  "message_text": "Your V2 verification code is 789012",
+  "message_type": "verification",
+  "recipient": "+15559876543",
+  "secrets": {
+    "sms_provider_key": "secret-v2-key-123"
+  },
+  "tenant": {
+    "id": "tenant-v2-789"
+  }
+}

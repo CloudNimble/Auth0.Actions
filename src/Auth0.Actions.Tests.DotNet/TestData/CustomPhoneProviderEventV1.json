@@ -1,0 +1,11 @@
+{
+  "phone_number": "+15551234567",
+  "message": "Your verification code is 654321",
+  "purpose": "mfa_verification",
+  "secrets": {
+    "sms_provider_key": "secret-key-123"
+  },
+  "tenant": {
+    "id": "tenant-789"
+  }
+}

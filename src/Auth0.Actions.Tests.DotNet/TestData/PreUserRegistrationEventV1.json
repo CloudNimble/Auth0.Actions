@@ -1,0 +1,42 @@
+{
+  "client": {
+    "client_id": "reg-client-123",
+    "name": "Registration Application",
+    "metadata": {
+      "app_type": "web"
+    }
+  },
+  "connection": {
+    "id": "con_456",
+    "name": "Username-Password-Authentication",
+    "strategy": "auth0"
+  },
+  "request": {
+    "ip": "192.168.1.1",
+    "method": "POST",
+    "user_agent": "Mozilla/5.0",
+    "query": {},
+    "body": {
+      "email": "newuser@example.com",
+      "password": "***",
+      "username": "newuser"
+    }
+  },
+  "secrets": {
+    "api_key": "secret-key-123"
+  },
+  "tenant": {
+    "id": "tenant-789"
+  },
+  "user": {
+    "email": "newuser@example.com",
+    "username": "newuser",
+    "email_verified": false,
+    "app_metadata": {
+      "plan": "free"
+    },
+    "user_metadata": {
+      "preferences": "dark_mode"
+    }
+  }
+}
